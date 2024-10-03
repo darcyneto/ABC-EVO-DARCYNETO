@@ -1,0 +1,22 @@
+﻿.btn {
+    background-color: #5742ad !important;
+    border-radius: 60px;
+}
+
+.veja {
+    padding-bottom: 20px !important;
+}
+
+.busca {
+   padding-bottom: 20px !important;
+}
+
+.footer {
+    font: bold;
+    background: #5742ad;
+    color: #FFFFFF;
+}
+
+.footer p {
+    text-align: center;
+}

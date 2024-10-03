@@ -1,0 +1,56 @@
+﻿@model RepositorioGitHub.Dominio.ActionResult<RepositorioGitHub.Dominio.GitHubRepositoryViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+@Styles.Render("~/Content/styleABC")
+
+<h2>Teste Desenvolvedor Backend Jr - Darcy Neto <a href="https://www.linkedin.com/in/darcyneto/" target="_blank"><i class="material-icons">open_in_new</i></a></h2>
+
+<div class="jumbotron">
+    <p class="lead">Implemente a API do github no projeto seguindo a documentação abaixo:</p>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" target="_blank" href="https://docs.github.com/en" role="button">Visite a documentação</a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Nome</th>
+                <th>Proprietario</th>
+                <th>Nome Completo</th>
+                <th>URL</th>              
+            </tr>
+            @if (Model != null && Model.Results != null)
+             {
+                foreach (var item in Model.Results)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Owner.Login)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Full_Name)
+                        </td>
+                        <td>
+                            <a href="@item.Url.ToString().Replace("https://api.", "https://").Replace("/repos", "")" target="_blank">
+                                     @item.Url.ToString().Replace("https://api.", "https://").Replace("/repos", "")
+                            </a>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detalhe", "Details", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+             }
+        </table>
+    </div>
+</div>
